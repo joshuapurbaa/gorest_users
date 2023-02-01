@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gorest_users/core/api/api.dart';
 
 class DioClient {
   String baseUrl = 'https://gorest.co.in/public/v2';
@@ -10,10 +11,12 @@ class DioClient {
 
   DioClient() {
     _dio = _createDio();
+    _dio.interceptors.add(CustomDioInterceptor());
   }
 
   Dio get dio {
     final dio = _createDio();
+    _dio.interceptors.add(CustomDioInterceptor());
     return dio;
   }
 
